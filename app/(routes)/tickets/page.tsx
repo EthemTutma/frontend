@@ -47,7 +47,7 @@ export default function TicketsPage() {
   const userRole = user?.rol;
 
   // Gerçek uygulamada bu veri API'den gelecektir
-  const [tickets, setTickets] = useState<Ticket[]>([
+  const [tickets] = useState<Ticket[]>([
     {
       id: "1",
       eventId: "1",

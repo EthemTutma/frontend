@@ -7,7 +7,7 @@ import { Calendar } from '@/components/ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { format } from 'date-fns'
 import { tr } from 'date-fns/locale'
-import { CalendarIcon, Plus, Trash2, ImagePlus, Clock } from 'lucide-react'
+import { CalendarIcon, Plus, Trash2, Clock } from 'lucide-react'
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 

@@ -1,8 +1,20 @@
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FeaturedEvents } from "@/app/components/events/featured-events";
-
+import { Skeleton } from "@/app/components/ui/skeleton";
+import { useState, useEffect } from "react";
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate data fetching
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // 2 seconds delay
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -49,7 +61,15 @@ export default function Home() {
             Kaçırmamanız gereken en popüler etkinlikler
           </p>
           <div className="mt-10">
-            <FeaturedEvents />
+            {loading ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <Skeleton className="h-48 w-full" />
+                <Skeleton className="h-48 w-full" />
+                <Skeleton className="h-48 w-full" />
+              </div>
+            ) : (
+              <FeaturedEvents />
+            )}
           </div>
         </div>
       </section>
@@ -124,7 +144,7 @@ const categories = [
     name: "Konserler",
     slug: "concerts",
     description: "Canlı müzik performansları ve konserler",
-    icon: (props: any) => (
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -145,7 +165,7 @@ const categories = [
     name: "Spor",
     slug: "sports",
     description: "Futbol, basketbol ve diğer spor etkinlikleri",
-    icon: (props: any) => (
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -166,7 +186,7 @@ const categories = [
     name: "Tiyatro",
     slug: "theater",
     description: "Tiyatro oyunları ve sahne performansları",
-    icon: (props: any) => (
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -187,7 +207,7 @@ const categories = [
     name: "Festivaller",
     slug: "festivals",
     description: "Müzik, yemek ve kültür festivalleri",
-    icon: (props: any) => (
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
